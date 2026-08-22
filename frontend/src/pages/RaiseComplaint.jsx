@@ -47,20 +47,26 @@ const RaiseComplaint = () => {
     }
   };
 
+  const inputClass =
+    'mt-1.5 w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0f4c3a]/30 focus:border-[#0f4c3a]';
+
   return (
     <div className="max-w-xl mx-auto px-4 py-10">
-      <h1 className="text-xl font-semibold text-slate-800 mb-1">Raise a Complaint</h1>
+      <h1 className="text-2xl font-bold text-slate-900 mb-1">Raise a Complaint</h1>
       <p className="text-slate-500 text-sm mb-6">
         Describe the issue and optionally attach a photo for context.
       </p>
 
-      <form onSubmit={handleSubmit} className="bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white border border-slate-200 border-t-4 border-t-[#0f4c3a] rounded-2xl shadow-sm p-6 space-y-4"
+      >
         <div>
-          <label className="text-sm text-slate-600">Category</label>
+          <label className="text-sm font-medium text-slate-700">Category</label>
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-1 w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className={inputClass}
           >
             {CATEGORIES.map((c) => (
               <option key={c} value={c}>{c}</option>
@@ -69,38 +75,41 @@ const RaiseComplaint = () => {
         </div>
 
         <div>
-          <label className="text-sm text-slate-600">Description</label>
+          <label className="text-sm font-medium text-slate-700">Description</label>
           <textarea
             required
             rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="e.g. Water leakage near the parking lot entrance"
-            className="mt-1 w-full border border-slate-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Please describe the issue in detail..."
+            className={inputClass}
           />
         </div>
 
         <div>
-          <label className="text-sm text-slate-600">Photo (optional)</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handlePhotoChange}
-            className="mt-1 w-full text-sm text-slate-600"
-          />
+          <label className="text-sm font-medium text-slate-700">Photo (optional)</label>
+          <div className="mt-1.5 border-2 border-dashed border-slate-300 rounded-lg p-4 text-center">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoChange}
+              className="w-full text-sm text-slate-600"
+            />
+            <p className="text-xs text-slate-400 mt-1">PNG, JPG up to 5MB</p>
+          </div>
           {preview && (
-            <img src={preview} alt="Preview" className="mt-3 h-32 rounded-md border border-slate-200 object-cover" />
+            <img src={preview} alt="Preview" className="mt-3 h-32 rounded-lg border border-slate-200 object-cover" />
           )}
         </div>
 
-        {error && <p className="text-red-600 text-sm">{error}</p>}
+        {error && <p className="text-rose-600 text-sm">{error}</p>}
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white rounded-md py-2 text-sm font-medium"
+          className="w-full bg-[#0f4c3a] hover:bg-[#0c3d2e] disabled:opacity-60 text-white rounded-lg py-2.5 text-sm font-semibold transition-colors"
         >
-          {loading ? 'Submitting...' : 'Submit Complaint'}
+          {loading ? 'Submitting...' : 'Submit Report'}
         </button>
       </form>
     </div>

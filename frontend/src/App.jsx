@@ -6,6 +6,16 @@ import Register from './pages/Register';
 import RaiseComplaint from './pages/RaiseComplaint';
 import MyComplaints from './pages/MyComplaints';
 import NoticeBoard from './pages/NoticeBoard';
+import AdminComplaints from './pages/AdminComplaints';
+import AdminDashboard from './pages/AdminDashboard';
+import { useAuth } from './context/AuthContext';
+
+// Shows the right "home" page depending on who's logged in
+const Home = () => {
+  const { user } = useAuth();
+  if (user?.role === 'admin') return <AdminComplaints />;
+  return <MyComplaints />;
+};
 
 function App() {
   return (
@@ -18,8 +28,8 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectedRoute role="resident">
-              <MyComplaints />
+            <ProtectedRoute>
+              <Home />
             </ProtectedRoute>
           }
         />
@@ -31,12 +41,19 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/notices"
           element={
             <ProtectedRoute>
               <NoticeBoard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />
