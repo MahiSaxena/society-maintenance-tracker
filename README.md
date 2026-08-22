@@ -11,24 +11,27 @@ A full-stack platform for apartment societies to manage maintenance complaints. 
 - **Email:** Nodemailer (SMTP)
 
 ## Project Structure
+
+```
 society-maintenance-tracker/
 ├── backend/
-│ ├── config/ # MongoDB connection
-│ ├── models/ # User, Complaint, Notice schemas
-│ ├── middleware/ # JWT auth, role checks, photo upload
-│ ├── controllers/ # Route logic
-│ ├── routes/ # Express routers
-│ ├── utils/ # Email helper, admin seed script
-│ ├── uploads/ # Uploaded complaint photos (gitignored)
-│ └── server.js
+│   ├── config/          # MongoDB connection
+│   ├── models/          # User, Complaint, Notice schemas
+│   ├── middleware/       # JWT auth, role checks, photo upload
+│   ├── controllers/      # Route logic
+│   ├── routes/            # Express routers
+│   ├── utils/             # Email helper, admin seed script
+│   ├── uploads/           # Uploaded complaint photos (gitignored)
+│   └── server.js
 ├── frontend/
-│ └── src/
-│ ├── api/ # Axios client
-│ ├── context/ # Auth context
-│ ├── components/ # Navbar, badges, route guard
-│ └── pages/ # Login, Register, complaints, notices, dashboard
+│   └── src/
+│       ├── api/           # Axios client
+│       ├── context/       # Auth context
+│       ├── components/    # Navbar, badges, route guard
+│       └── pages/         # Login, Register, complaints, notices, dashboard
 ├── README.md
 └── SYSTEM_DESIGN.md
+```
 
 
 ## Setup Guide
