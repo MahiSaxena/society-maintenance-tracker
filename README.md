@@ -172,10 +172,6 @@ curl -X PATCH http://localhost:5000/api/complaints/<id>/status \
 
 ## Deployment
 
-- **Backend:** deployed on Render — https://your-render-url.onrender.com
-- **Frontend:** deployed on Vercel — https://your-vercel-url.vercel.app
-- **Database:** MongoDB Atlas (free tier)
-
 **Live app:** https://society-maintenance-tracker-delta.vercel.app
 
 ## System Design
