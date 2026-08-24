@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
 api.interceptors.request.use((config) => {
@@ -12,7 +12,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// If the token is invalid or expired, bounce back to login
+// If the token is invalid/expired, bounce back to login
 api.interceptors.response.use(
   (res) => res,
   (err) => {
@@ -26,5 +26,11 @@ api.interceptors.response.use(
     return Promise.reject(err);
   }
 );
+
+export const getPhotoUrl = (photoUrl) => {
+  if (!photoUrl) return null;
+  const base = import.meta.env.VITE_API_URL?.replace('/api', '') || '';
+  return `${base}${photoUrl}`;
+};
 
 export default api;

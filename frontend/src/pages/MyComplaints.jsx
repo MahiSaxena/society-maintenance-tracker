@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../api/client';
+import api, { getPhotoUrl } from '../api/client';
 import { StatusBadge, PriorityBadge, OverdueBadge } from '../components/Badges';
 
 const statusAccent = {
@@ -72,11 +72,13 @@ const MyComplaints = () => {
                 </p>
               </div>
               {c.photoUrl && (
-                <img
-                  src={c.photoUrl}
-                  alt="Complaint"
-                  className="w-16 h-16 object-cover rounded-lg border border-slate-200"
-                />
+                <a href={getPhotoUrl(c.photoUrl)} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src={getPhotoUrl(c.photoUrl)}
+                    alt="Complaint"
+                    className="w-16 h-16 object-cover rounded-lg border border-slate-200 hover:opacity-80 transition-opacity cursor-pointer"
+                  />
+                </a>
               )}
             </div>
 
