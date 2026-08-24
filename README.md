@@ -172,11 +172,11 @@ curl -X PATCH http://localhost:5000/api/complaints/<id>/status \
 
 ## Deployment
 
-- **Backend:** deployed on Render — environment variables set in the hosting dashboard, same as `.env`
-- **Frontend:** deployed on Vercel
+- **Backend:** deployed on Render — https://your-render-url.onrender.com
+- **Frontend:** deployed on Vercel — https://your-vercel-url.vercel.app
 - **Database:** MongoDB Atlas (free tier)
 
-Live URL: _(added after deployment)_
+**Live app:** https://society-maintenance-tracker-delta.vercel.app
 
 ## System Design
 
